@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bf56fddd-8607-42be-8968-075c1155ae3a" name="默认更改列表" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2JGGlssfUb4ymSxlGkEpkEQmC9F" />
+  <component name="ProjectViewState">
+    <option name="abbreviatePackageNames" value="true" />
+    <option name="foldersAlwaysOnTop" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RunManager">
+    <configuration name="CraApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.cra.CraApplication" />
+      <module name="demo_7_7" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.cra.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CraApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bf56fddd-8607-42be-8968-075c1155ae3a" name="默认更改列表" comment="" />
+      <created>1671697161273</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671697161273</updated>
+      <workItem from="1671697164854" duration="2457000" />
+      <workItem from="1671802665861" duration="632000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="634" y="269" key="FileChooserDialogImpl" timestamp="1671697321784">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state x="634" y="269" key="FileChooserDialogImpl/0.0.1707.1027@0.0.1707.1027" timestamp="1671697321784" />
+    <state width="1663" height="215" key="GridCell.Tab.0.bottom" timestamp="1671803303105">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1663" height="215" key="GridCell.Tab.0.bottom/0.0.1707.1027@0.0.1707.1027" timestamp="1671803303105" />
+    <state width="1663" height="215" key="GridCell.Tab.0.center" timestamp="1671803303105">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1663" height="215" key="GridCell.Tab.0.center/0.0.1707.1027@0.0.1707.1027" timestamp="1671803303105" />
+    <state width="1663" height="215" key="GridCell.Tab.0.left" timestamp="1671803303105">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1663" height="215" key="GridCell.Tab.0.left/0.0.1707.1027@0.0.1707.1027" timestamp="1671803303105" />
+    <state width="1663" height="215" key="GridCell.Tab.0.right" timestamp="1671803303105">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state width="1663" height="215" key="GridCell.Tab.0.right/0.0.1707.1027@0.0.1707.1027" timestamp="1671803303105" />
+    <state x="355" y="156" key="SettingsEditor" timestamp="1671698572050">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state x="355" y="156" key="SettingsEditor/0.0.1707.1027@0.0.1707.1027" timestamp="1671698572050" />
+    <state x="538" y="246" width="822" height="534" key="find.popup" timestamp="1671802786968">
+      <screen x="0" y="0" width="1707" height="1027" />
+    </state>
+    <state x="538" y="246" width="822" height="534" key="find.popup/0.0.1707.1027@0.0.1707.1027" timestamp="1671802786968" />
+  </component>
+</project>

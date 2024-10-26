@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cra.mapper.UsersMapper">
+    <select id="login" parameterType="String" resultType="com.example.cra.entity.Users">
+        select * from users where user_name = #{user_name} and password = #{password}
+    </select>
+    <insert id="register" parameterType="com.example.cra.entity.Users">
+        insert into users(user_name,password,sex,birthday,role_id,status) values(#{user_name},#{password},#{sex},#{birthday},#{role_id},#{status})
+    </insert>
+    <select id="selectRoleId" parameterType="String" resultType="int">
+        select role_id from users where user_name= #{user_name}
+    </select>
+    <delete id="deleteUsers" parameterType="String">
+        delete from users where user_name = #{user_name}
+    </delete>
+    <select id="selectAll" resultType="com.example.cra.entity.Users">
+        select * from users
+    </select>
+    <update id="updateUsers" parameterType="com.example.cra.entity.Users">
+        update users set role_id = #{editRole} where user_name=#{editname}
+    </update>
+    <select id="selectUsers" resultType="com.example.cra.entity.Users" parameterType="com.example.cra.util.SelectUsers">
+        select * from users
+        <where>
+            <if test="username != null and username != ''">and user_name like '%${username}%'</if>
+            <if test="sex != 100">and sex = #{sex}</if>
+            <if test="select_role != 100">and role_id = #{select_role}</if>
+            <if test="select_status != 100">and status = #{select_status}</if>
+            <if test="datemin != null">and birthday &gt;= '${datemin}'</if>
+            <if test="datemax != null">and birthday &lt;= '${datemax}'</if>
+        </where>
+    </select>
+    <select id="findUserIdByUserName" parameterType="String" resultType="int">
+        select user_id from users where user_name = #{user_name}
+    </select>
+    <select id="checkname" parameterType="String" resultType="int">
+        select count(*) from users where user_name = #{username}
+    </select>
+    <select id="queryuser" parameterType="int" resultType="com.example.cra.entity.Users">
+        select * from users where user_id = #{user_id}
+    </select>
+    <update id="updateUser" parameterType="com.example.cra.entity.Users">
+        update users set user_name = #{user_name},password=#{password},sex=#{sex},birthday=#{birthday},role_id=#{role_id},status=#{status} where user_id = #{user_id}
+    </update>
+</mapper>

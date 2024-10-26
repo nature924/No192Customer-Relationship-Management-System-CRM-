@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cra.mapper.BookinfoMapper">
+    <select id="getAllBookinfo" resultType="com.example.cra.entity.Bookinfo">
+		SELECT bookinfo.*,cust_name FROM bookinfo JOIN customers ON cust_id = customer_id
+	</select>
+
+    <select id="getABookinfo" resultType="com.example.cra.entity.Bookinfo">
+		SELECT bookinfo.*,cust_name FROM bookinfo JOIN customers ON cust_id = customer_id WHERE book_id = #{book_id}
+	</select>
+
+    <insert id="addBookinfo" parameterType="com.example.cra.entity.Bookinfo">
+		INSERT INTO bookinfo (cust_id, title, bookinfo.desc, book_time, create_time)
+		VALUES ((SELECT customer_id FROM customers WHERE cust_name = #{cust_name}), 
+		#{title}, #{desc}, #{book_time}, #{create_time})
+	</insert>
+
+    <update id="editBookinfo" parameterType="com.example.cra.entity.Bookinfo">
+		UPDATE bookinfo SET cust_id = (SELECT customer_id FROM customers WHERE cust_name = #{cust_name}), 
+		title = #{title}, bookinfo.desc = #{desc}, book_time = #{book_time}, create_time = #{create_time}
+		WHERE book_id = #{book_id}
+	</update>
+
+    <delete id="delBookinfo" parameterType="int">
+		DELETE FROM bookinfo WHERE book_id = #{book_id}
+	</delete>
+
+    <select id="getBookinfoByCustName" resultType="com.example.cra.entity.Bookinfo">
+		SELECT bookinfo.*,cust_name FROM bookinfo JOIN customers ON cust_id = customer_id WHERE cust_name = #{cust_name} 
+	</select>
+</mapper>

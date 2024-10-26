@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cra.mapper.LogsMapper">
+    <select id="getAllLogs" resultType="com.example.cra.entity.Logs">
+		SELECT logs.*, customers.cust_name FROM logs JOIN customers ON customer_id =cust_id
+	</select>
+
+    <select id="getALog" resultType="com.example.cra.entity.Logs">
+		SELECT logs.*, customers.cust_name FROM logs JOIN customers ON customer_id =cust_id WHERE log_id = #{log_id}
+	</select>
+
+    <insert id="addLog" parameterType="com.example.cra.entity.Logs">
+		INSERT INTO logs (logs.title, logs.desc, logs.cust_id, logs.create_time) 
+		VALUES (#{title}, #{desc}, (SELECT customer_id FROM customers WHERE cust_name = #{cust_name}), #{create_time})
+	</insert>
+
+    <update id="editLog" parameterType="com.example.cra.entity.Logs">
+		UPDATE logs SET title = #{title}, logs.desc = #{desc}, 
+		cust_id = (SELECT customer_id FROM customers WHERE cust_name = #{cust_name}), create_time = #{create_time}
+		WHERE log_id = #{log_id}
+	</update>
+
+    <delete id="delLog" parameterType="int">
+		DELETE FROM logs WHERE log_id = #{log_id}
+	</delete>
+
+    <select id="getCustName" resultType="String">
+		SELECT cust_name FROM customers
+	</select>
+
+    <select id="getLogByCustName" resultType="com.example.cra.entity.Logs">
+		SELECT logs.*, customers.cust_name FROM logs JOIN customers ON customer_id =cust_id WHERE cust_name = #{cust_name}
+	</select>
+</mapper>

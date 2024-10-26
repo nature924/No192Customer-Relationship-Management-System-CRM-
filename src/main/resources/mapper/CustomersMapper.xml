@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cra.mapper.CustomersMapper">
+    <select id="getAllCustomers" resultType="com.example.cra.entity.Customers">
+		SELECT * FROM CUSTOMERS
+	</select>
+    <select id="getCustomerById" resultType="com.example.cra.entity.Customers">
+		SELECT * FROM CUSTOMERS
+		WHERE CUSTOMER_ID = #{id}
+	</select>
+    <select id="getCustomersByStatus" resultType="com.example.cra.entity.Customers">
+		SELECT * FROM CUSTOMERS WHERE status = #{status}
+	</select>
+    <select id="getCustomersByCust_name" resultType="com.example.cra.entity.Customers">
+		SELECT * FROM CUSTOMERS WHERE cust_name = #{cust_name}
+	</select>
+    <select id="getCustomersByUser_id" resultType="com.example.cra.entity.Customers">
+		SELECT * FROM CUSTOMERS WHERE user_id = #{user_id}
+	</select>
+    <select id="queryCustomers" resultType="com.example.cra.entity.Customers">
+        SELECT * FROM CUSTOMERS,USERS
+        <where>
+            CUSTOMERS.user_id = USERS.user_id
+            <if test="cust_name!=null">
+                and cust_name LIKE '%' #{cust_name} '%'
+            </if>
+            <if test="user_id!=0">
+                and CUSTOMERS.user_id =#{user_id}
+            </if>
+            <if test="cust_background!=0">
+                and cust_background =#{cust_background}
+            </if>
+            <if test="listed!=0">
+                and listed =#{listed}
+            </if>
+            <if test="cust_type!=0">
+                and cust_type =#{cust_type}
+            </if>
+            <if test="status!=0">
+                and CUSTOMERS.status =#{status}
+            </if>
+        </where>
+
+    </select>
+    <insert id="insertCustomer" parameterType="com.example.cra.entity.Customers">
+		insert into
+		CUSTOMERS(cust_name,cust_type,cust_background,
+		listed,reg_capital,year_sales,entp_scale,tester_no,url,
+		zip_code,address,major_services,main_products,status,
+		user_id,create_time)
+		values(#{cust_name},#{cust_type},
+		#{cust_background},#{listed},#{reg_capital},#{year_sales},
+		#{entp_scale},#{tester_no},#{url},#{zip_code},
+		#{address},#{major_services},#{main_products},#{status},
+		#{user_id},#{create_time});
+	</insert>
+    <update id="updateCustomer" parameterType="com.example.cra.entity.Customers">
+        UPDATE CUSTOMERS
+        <trim prefix="set" suffixOverrides=",">
+            <if test="cust_type!=0">cust_type=#{cust_type},</if>
+            <if test="cust_background!=0">cust_background=#{cust_background},</if>
+            <if test="listed!=0">listed=#{listed},</if>
+            <if test="reg_capital!=0">reg_capital=#{reg_capital},</if>
+            <if test="year_sales!=0">year_sales=#{year_sales},</if>
+            <if test="entp_scale!=0">entp_scale=#{entp_scale},</if>
+            <if test="tester_no!=0">tester_no=#{tester_no},</if>
+            <if test="url!=null">url=#{url},</if>
+            <if test="zip_code!=null">zip_code=#{zip_code},</if>
+            <if test="address!=null">address=#{address},</if>
+            <if test="major_services!=null">major_services=#{major_services},</if>
+            <if test="main_products!=null">main_products=#{main_products},</if>
+            <if test="status!=0">status=#{status},</if>
+            <if test="user_id!=0">user_id=#{user_id},</if>
+            <if test="create_time!=null">create_time=#{create_time},</if>
+        </trim>
+        WHERE cust_name=#{cust_name}
+    </update>
+    <delete id="deleteCustomerById">
+		DELETE FROM CUSTOMERS WHERE customer_id = #{id}
+	</delete>
+    <delete id="deleteCustomerByName">
+		DELETE FROM CUSTOMERS WHERE cust_name = #{cust_name}
+	</delete>
+</mapper>

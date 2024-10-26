@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cra.mapper.ContactsMapper">
+    <resultMap id="contactsMap" type="com.example.cra.entity.Contacts">
+        <id column="cont_id" property="cont_id" />
+        <result column="cont_name" property="cont_name" />
+        <result column="cont_dept" property="cont_dept" />
+        <result column="cont_mobile" property="cont_mobile" />
+        <result column="create_time" property="create_time" />
+        <association property="customers"  javaType="com.example.cra.entity.Customers">
+            <id column="customer_id" property="customer_id" />
+            <result column="cust_name" property="cust_name" />
+        </association>
+    </resultMap>
+    <insert id="addContacts" parameterType="com.example.cra.entity.Contacts">
+        insert into contacts(cust_id,cont_name,cont_dept,cont_position,cont_telephone,cont_mobile,cont_email,cont_qq,tech_degree,more_info,create_time)
+        values (#{cust_id},#{cont_name},#{cont_dept},#{cont_position},#{cont_telephone},
+        #{cont_mobile},#{cont_email},#{cont_qq},#{tech_degree},#{more_info},#{create_time})
+    </insert>
+    <select id="contactsList" resultMap="contactsMap">
+        select cont_id,cust_name,cont_name,cont_dept,cont_mobile,c.create_time
+        from contacts c,customers
+        where c.cust_id = customers.customer_id
+    </select>
+    <delete id="delContacts" parameterType="int">
+         delete from contacts where cont_id = #{cont_id}
+    </delete>
+    <select id="queryContacts" resultMap="contactsMap">
+        select cont_id,cust_name,cont_name,cont_dept,cont_mobile,c.create_time
+        from contacts c,customers
+        <where>
+            <if test="cust_name!=null and cust_name!=&quot;&quot;">cust_name like '%${cust_name}%' and</if>
+            <if test="datemin !=&quot;&quot;">c.create_time &gt;= '${datemin}' and</if>
+            <if test="datemax != &quot;&quot;">c.create_time &lt;= '${datemax}'and</if>
+            c.cust_id = customers.customer_id
+        </where>
+    </select>
+    <select id="selectContacts" parameterType="int" resultType="com.example.cra.entity.Contacts">
+         select * from contacts where cont_id=#{cont_id}
+    </select>
+    <update id="updateContacts" parameterType="com.example.cra.entity.Contacts">
+        update contacts
+        set cust_id=#{cust_id},cont_name=#{cont_name},cont_dept=#{cont_dept},cont_position=#{cont_position},cont_telephone=#{cont_telephone},cont_mobile=#{cont_mobile},
+        cont_email=#{cont_email},cont_qq=#{cont_qq},tech_degree=#{tech_degree},more_info=#{more_info}
+        where cont_id = #{cont_id}
+    </update>
+</mapper>
